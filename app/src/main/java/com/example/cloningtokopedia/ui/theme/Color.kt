@@ -3,8 +3,8 @@ package com.example.cloningtokopedia.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // primary and secondary color
-val backgroundColor = Color(0xFFFFFFFF)
 val primaryColor = Color(0xFF00AA5B)
+val secondaryColor = Color(0xFFFFFFFF)
 
 // color text
 val primaryTextColor = Color(0x00000000)
