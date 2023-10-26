@@ -100,7 +100,6 @@ fun CustomSearchView(
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun Previewer() {
