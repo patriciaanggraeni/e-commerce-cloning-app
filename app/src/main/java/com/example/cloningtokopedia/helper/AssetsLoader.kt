@@ -24,12 +24,13 @@ import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 fun LoadIcon(
     painter: Painter,
     iconName: String? = null,
-    size: Dp = 24.dp
+    size: Dp = 24.dp,
+    tint: Color = Color.Unspecified
 ) {
     Icon(
         painter = painter,
         contentDescription = iconName,
-        tint = Color.Unspecified,
+        tint = tint,
         modifier = Modifier.customIcon(size, Color.Transparent)
     )
 }
