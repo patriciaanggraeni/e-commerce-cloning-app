@@ -15,7 +15,7 @@ fun LoadIcon(
     painter: Painter,
     iconName: String? = null,
     size: Dp = 24.dp,
-    tint: Color = Color.Unspecified,
+    tint: Color = Color.Unspecified
 ) {
     Icon(
         painter = painter,
