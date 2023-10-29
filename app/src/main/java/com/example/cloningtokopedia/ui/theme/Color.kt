@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 // primary and secondary color
 val primaryColor = Color(0xFF00AA5B)
 val secondaryColor = Color(0xFFFFFFFF)
+val accentColor = Color(0xFF6F7585)
 
 // color text
 val primaryTextColor = Color(0x00000000)
