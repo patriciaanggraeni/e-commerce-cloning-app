@@ -19,7 +19,7 @@ import com.example.cloningtokopedia.ui.theme.accentColor
 fun CustomTopAppBarIcons(
     icon: Painter,
     size: Dp = 24.dp,
-    tint: Color = Color.Black,
+    tint: Color = Color.Unspecified,
 ) {
     Row {
         LoadIcon(
