@@ -17,7 +17,7 @@ fun Modifier.customIcon(size: Dp, color: Color): Modifier {
     return width(size).height(size).background(color)
 }
 
-fun Modifier.customSearchView(
+fun Modifier.customSearchField(
     width: Dp = 0.dp,
     height: Dp = 0.dp,
     cornerSize: Dp = 0.dp,
