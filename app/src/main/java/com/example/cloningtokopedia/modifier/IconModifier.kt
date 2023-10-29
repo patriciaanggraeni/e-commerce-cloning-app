@@ -1,4 +1,4 @@
-package com.example.cloningtokopedia.helper
+package com.example.cloningtokopedia.modifier
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -13,8 +13,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.cloningtokopedia.ui.theme.borderColor
 
+
 fun Modifier.customIcon(size: Dp, color: Color): Modifier {
     return width(size).height(size).background(color)
+<<<<<<< HEAD:app/src/main/java/com/example/cloningtokopedia/modifier/IconModifier.kt
+=======
 }
 
 fun Modifier.customSearchField(
@@ -34,4 +37,5 @@ fun Modifier.customSearchField(
         ),
         shape = RoundedCornerShape(cornerSize)
     )
+>>>>>>> main:app/src/main/java/com/example/cloningtokopedia/helper/ExtensionFun.kt
 }
