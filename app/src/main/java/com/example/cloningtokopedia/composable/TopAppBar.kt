@@ -22,7 +22,7 @@ import com.example.cloningtokopedia.ui.theme.secondaryTextColor
 @Composable
 fun CustomTopAppBar() {
     Row(
-        Modifier.fillMaxWidth(),
+        Modifier.fillMaxWidth().padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -73,7 +73,7 @@ fun CustomTopAppBar() {
 fun CustomTopAppBarPreview() {
     CloningTokopediaTheme {
         Row(
-            Modifier.fillMaxSize().padding(10.dp),
+            Modifier.fillMaxSize(),
         ) {
             CustomTopAppBar()
         }
