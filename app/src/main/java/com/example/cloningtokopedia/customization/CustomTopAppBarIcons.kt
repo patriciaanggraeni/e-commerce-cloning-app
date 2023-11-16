@@ -2,8 +2,10 @@ package com.example.cloningtokopedia.customization
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -11,23 +13,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.cloningtokopedia.R
-import com.example.cloningtokopedia.helper.LoadIcon
+import com.example.cloningtokopedia.modifier.customIcon
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 import com.example.cloningtokopedia.ui.theme.accentColor
 
 @Composable
 fun CustomTopAppBarIcons(
     icon: Painter,
+    iconName: String? = null,
     size: Dp = 24.dp,
     tint: Color = Color.Unspecified,
 ) {
-    Row {
-        LoadIcon(
-            painter = icon,
-            size = size,
-            tint = tint
-        )
-    }
+    Icon(
+        painter = icon,
+        contentDescription = iconName,
+        tint = tint,
+        modifier = Modifier.customIcon(size, Color.Transparent),
+    )
 }
 
 @Preview(showBackground = true)
@@ -38,13 +40,6 @@ fun TopBarIconsPreview() {
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-             val listIcons = listOf(
-                R.drawable.icn_email,
-                R.drawable.icn_bell,
-                R.drawable.icn_cart,
-                R.drawable.icn_menu
-            )
-
             CustomTopAppBarIcons(
                  icon = painterResource(id = R.drawable.icn_email),
                  size = 20.dp,

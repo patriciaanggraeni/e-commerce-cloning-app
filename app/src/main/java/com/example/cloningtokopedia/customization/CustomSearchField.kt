@@ -27,7 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.cloningtokopedia.R
-import com.example.cloningtokopedia.helper.LoadIcon
 import com.example.cloningtokopedia.modifier.customSearchField
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 import com.example.cloningtokopedia.ui.theme.accentColor
@@ -43,7 +42,7 @@ fun CustomSearchField(
     spacer: Dp = 0.dp,
     icon: Painter,
     iconSize: Dp = 24.dp,
-    iconTint: Color = accentColor,
+    iconTint: Color = Color.Unspecified,
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -51,8 +50,8 @@ fun CustomSearchField(
         verticalAlignment = Alignment.CenterVertically
     ) {
         var query by remember { mutableStateOf("") }
-        LoadIcon(
-            painter = icon,
+        CustomTopAppBarIcons(
+            icon = icon,
             size = iconSize,
             tint = iconTint
         )
