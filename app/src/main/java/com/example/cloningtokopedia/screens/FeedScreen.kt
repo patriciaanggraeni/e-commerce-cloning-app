@@ -17,7 +17,7 @@ fun FeedScreen() {
     ) {
         CustomTextView(
             text = "Feed Screen",
-            fontSize = 50,
+            fontSize = 30,
             fontWeight = "bold"
         )
     }

@@ -16,8 +16,8 @@ fun WishlistScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CustomTextView(
-            text = "Home Screen",
-            fontSize = 50,
+            text = "Wishlist Screen",
+            fontSize = 30,
             fontWeight = "bold"
         )
     }

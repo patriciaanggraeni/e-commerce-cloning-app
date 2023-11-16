@@ -1,18 +1,29 @@
 package com.example.cloningtokopedia.composable
 
+import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.cloningtokopedia.R
 import com.example.cloningtokopedia.customization.CustomTextView
 import com.example.cloningtokopedia.model.BottomNavItems
+import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 import com.example.cloningtokopedia.ui.theme.accentColor
+import com.example.cloningtokopedia.ui.theme.primaryColor
 import com.example.cloningtokopedia.ui.theme.secondaryColor
 
 @Composable
@@ -21,8 +32,8 @@ fun CustomBottomNavigation(navController: NavController) {
         BottomNavItems.Home,
         BottomNavItems.Feed,
         BottomNavItems.OfficialStore,
-        BottomNavItems.Transaction,
-        BottomNavItems.Wishlist
+        BottomNavItems.Wishlist,
+        BottomNavItems.Transaction
     )
 
     BottomNavigation(
@@ -33,11 +44,13 @@ fun CustomBottomNavigation(navController: NavController) {
 
         navItems.forEach { item ->
             BottomNavigationItem(
+                modifier = Modifier
+                    .height(100.dp)
+                    .padding(0.dp),
                 selected = currentDestination == item.getRoutes(),
                 alwaysShowLabel = true,
                 onClick = {
                     navController.navigate(item.getRoutes()) {
-
                         navController.graph.startDestinationRoute?.let { routes ->
                             popUpTo(routes) {
                                 saveState = true
@@ -49,7 +62,14 @@ fun CustomBottomNavigation(navController: NavController) {
                 },
                 icon = {
                     Icon(
-                        painter = painterResource(id = item.getIcon()),
+                        modifier = Modifier.size(20.dp),
+                        painter = painterResource(
+                            id = if (currentDestination == item.getRoutes()) {
+                                item.getSelectedIcon()
+                            } else {
+                                item.getUnselectedIcon()
+                            }
+                        ),
                         tint = Color.Unspecified,
                         contentDescription = item.getTitle()
                     )
@@ -57,13 +77,22 @@ fun CustomBottomNavigation(navController: NavController) {
                 label = {
                     CustomTextView(
                         text = item.getTitle(),
-                        fontSize = 10,
+                        fontSize = 9,
                         color = accentColor
                     )
                 },
-
             )
         }
     }
+}
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@Preview(showBackground = true)
+@Composable
+fun CustomBottomNavigation() {
+    CloningTokopediaTheme {
+        Scaffold(
+            bottomBar = { CustomBottomNavigation(navController = rememberNavController()) }
+        ) {}
+    }
 }

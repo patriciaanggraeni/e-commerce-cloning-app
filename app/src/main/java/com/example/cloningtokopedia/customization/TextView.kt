@@ -18,6 +18,7 @@ fun CustomizedText(
         text = text,
         fontFamily = getCustomFont(weight),
         fontSize = fontSize.sp,
+        maxLines = 1,
         color = color
     )
 }

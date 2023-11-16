@@ -16,8 +16,8 @@ fun OfficialStoreScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CustomTextView(
-            text = "Home Screen",
-            fontSize = 50,
+            text = "Official Store Screen",
+            fontSize = 30,
             fontWeight = "bold"
         )
     }

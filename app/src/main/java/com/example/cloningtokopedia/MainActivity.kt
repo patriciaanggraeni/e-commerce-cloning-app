@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.cloningtokopedia.composable.CustomBottomNavigation
 import com.example.cloningtokopedia.composable.CustomTopAppBar
+import com.example.cloningtokopedia.navigations.NavigationGraph
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,13 +26,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CloningTokopediaTheme {
+                val navController = rememberNavController()
                 Scaffold(
                     topBar = { CustomTopAppBar() },
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(10.dp),
-                    bottomBar = { CustomBottomNavigation(navController = rememberNavController()) }
-                ) {}
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = { CustomBottomNavigation(navController = navController) }
+                ) {
+                    NavigationGraph(navHostController = navController)
+                }
             }
         }
     }
@@ -41,14 +43,14 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
-     CloningTokopediaTheme {
-         Scaffold(
-             topBar = { CustomTopAppBar() },
-             modifier = Modifier
-                 .fillMaxSize()
-                 .padding(10.dp),
-             bottomBar = { CustomBottomNavigation(navController = rememberNavController()) }
-         ) {
-         }
-     }
+     val navController = rememberNavController()
+    CloningTokopediaTheme {
+        Scaffold(
+            topBar = { CustomTopAppBar() },
+            modifier = Modifier.fillMaxSize(),
+            bottomBar = { CustomBottomNavigation(navController = navController) }
+        ) {
+            NavigationGraph(navHostController = navController)
+        }
+    }
 }

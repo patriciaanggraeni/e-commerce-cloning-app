@@ -17,7 +17,7 @@ fun HomeScreen() {
     ) {
         CustomTextView(
             text = "Home Screen",
-            fontSize = 50,
+            fontSize = 30,
             fontWeight = "bold"
         )
     }
