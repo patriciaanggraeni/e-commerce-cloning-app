@@ -12,6 +12,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.cloningtokopedia.ui.theme.borderColor
 
+// membuat fungsi extension modifier untuk custom searchfield yang digunakan
+// fungsi ini bisa digunakan kembali jika dibutuhkan
 fun Modifier.customSearchField(
     width: Dp = 0.dp,
     height: Dp = 0.dp,

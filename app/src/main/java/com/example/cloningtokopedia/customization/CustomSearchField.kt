@@ -32,6 +32,7 @@ import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 import com.example.cloningtokopedia.ui.theme.accentColor
 import com.example.cloningtokopedia.ui.theme.primaryTextColor
 
+// membuat fungsi custom composable untuk membuat search field
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomSearchField(
@@ -49,6 +50,10 @@ fun CustomSearchField(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
+        // membuat variabel state, hal ini agar nilai dapat berubah-rubah
+        // dan mendelegasikan variabel ke remember, berguna untuk mempertahankan nilai
+        // mutableStateOf berguna untuk memperbarui nilai dari query dan memberi notifikasi
+        // ke compose untuk melakukan rendering ulang saat nilai berubah
         var query by remember { mutableStateOf("") }
         CustomTopAppBarIcons(
             icon = icon,
@@ -71,6 +76,8 @@ fun CustomSearchField(
                     visualTransformation = VisualTransformation.None,
                     interactionSource = MutableInteractionSource(),
                     placeholder = {
+                        // saya kasih kondisi, jika query-nya kosong -> placeholder ditampilkan
+                        // jika user dalam keadaan mengetik, plaschoolder -> hilang
                         if (query.isBlank()) {
                             CustomTextView(
                                 text = placeholder,
@@ -79,6 +86,8 @@ fun CustomSearchField(
                             )
                         }
                     },
+                    // paraemeter ini untuk memberi style pada container searchfield
+                    // disini disetting menjadi transparant semua
                     container = {
                         OutlinedTextFieldDefaults.colors(
                             disabledContainerColor = Color.Transparent,

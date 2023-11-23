@@ -19,14 +19,18 @@ import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 import com.example.cloningtokopedia.ui.theme.accentColor
 import com.example.cloningtokopedia.ui.theme.secondaryTextColor
 
+// membuat fungsi composable untuk menampilkan komponen-komponen yang ada di top appbar
 @Composable
 fun CustomTopAppBar() {
     Row(
-        Modifier.fillMaxWidth().padding(10.dp),
+        Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
+
+        // menaggil fungsi kustom search field yang telah dibuat sebelumnya
         CustomSearchField(
+            // modifiernya menggunakan fungsi ekstensi yang telah dibuat sebelumnya
             modifier = Modifier
                 .customSearchField(
                     width = 200.dp,
@@ -42,6 +46,8 @@ fun CustomTopAppBar() {
             iconSize = 10.dp,
             iconTint = accentColor,
         )
+
+        // setalahnya panggil juga fungsi kustom untuk menampilkan icon di appbar
         CustomTopAppBarIcons(
              icon = painterResource(id = R.drawable.icn_email),
              size = 20.dp,

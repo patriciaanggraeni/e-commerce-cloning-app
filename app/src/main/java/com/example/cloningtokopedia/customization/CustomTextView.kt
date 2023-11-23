@@ -7,6 +7,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 import com.example.cloningtokopedia.ui.theme.getCustomFont
 
+// membuat fungsi custom composable untuk membuat dan menampilkan teks
 @Composable
 fun CustomTextView(
     text: String,

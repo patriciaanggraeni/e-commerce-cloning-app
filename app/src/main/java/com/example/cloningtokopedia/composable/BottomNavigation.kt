@@ -26,8 +26,11 @@ import com.example.cloningtokopedia.ui.theme.accentColor
 import com.example.cloningtokopedia.ui.theme.primaryColor
 import com.example.cloningtokopedia.ui.theme.secondaryColor
 
+// membuat fungsi kustom untuk menampilkan BottomNavigation
 @Composable
 fun CustomBottomNavigation(navController: NavController) {
+
+    // memuat list navigasi
     val navItems = listOf(
         BottomNavItems.Home,
         BottomNavItems.Feed,
@@ -39,7 +42,14 @@ fun CustomBottomNavigation(navController: NavController) {
     BottomNavigation(
         backgroundColor = secondaryColor
     ) {
+        // navBackStackEntry digunakan untuk mendapatkan BackStackEntry
+        // BackStackEntry digunakan untuk menyimpan stack entry sebelumnya
+        // jika user kembali ke halaman sebelumnya, maka entri saat ini akan dihancurkan
+        // dan entri sebelumnya direkontruksi kembali
         val navBackStackEntry by navController.currentBackStackEntryAsState()
+
+        // untuk menampung entri saat ini, maka dibutuhkan variabel untuk menampung entri tersbut
+        // currentDestination berisi route saat ini
         val currentDestination = navBackStackEntry?.destination?.route
 
         navItems.forEach { item ->
@@ -63,6 +73,8 @@ fun CustomBottomNavigation(navController: NavController) {
                 icon = {
                     Icon(
                         modifier = Modifier.size(20.dp),
+                        // khusus painter, saya kasih kondisi
+                        // berguna untuk mengganti ikon saat halaman saat ini dipilih
                         painter = painterResource(
                             id = if (currentDestination == item.getRoutes()) {
                                 item.getSelectedIcon()

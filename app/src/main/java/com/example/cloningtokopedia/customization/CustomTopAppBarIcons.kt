@@ -17,6 +17,7 @@ import com.example.cloningtokopedia.modifier.customIcon
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 import com.example.cloningtokopedia.ui.theme.accentColor
 
+// membuat fungsi custom composable untuk membuat list icon di app bar
 @Composable
 fun CustomTopAppBarIcons(
     icon: Painter,

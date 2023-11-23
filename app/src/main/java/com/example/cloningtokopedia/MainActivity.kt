@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.cloningtokopedia.composable.CustomBottomNavigation
 import com.example.cloningtokopedia.composable.CustomTopAppBar
+import com.example.cloningtokopedia.composable.DeliveredAddress
 import com.example.cloningtokopedia.navigations.NavigationGraph
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 
@@ -28,7 +29,6 @@ class MainActivity : ComponentActivity() {
             CloningTokopediaTheme {
                 val navController = rememberNavController()
                 Scaffold(
-                    topBar = { CustomTopAppBar() },
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = { CustomBottomNavigation(navController = navController) }
                 ) {

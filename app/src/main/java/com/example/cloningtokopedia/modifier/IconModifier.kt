@@ -13,7 +13,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.cloningtokopedia.ui.theme.borderColor
 
-
+// membuat fungsi extension modifier untuk custom icon yang digunakan
+// fungsi ini bisa digunakan kembali jika dibutuhkan
 fun Modifier.customIcon(size: Dp, color: Color): Modifier {
     return width(size).height(size).background(color)
 }

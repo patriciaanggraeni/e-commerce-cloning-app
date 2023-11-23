@@ -11,12 +11,22 @@ import com.example.cloningtokopedia.screens.OfficialStoreScreen
 import com.example.cloningtokopedia.screens.TransactionScreen
 import com.example.cloningtokopedia.screens.WishlistScreen
 
+// membuat fungsi composable NavigationGraph
+// fungsi menerima parameter navHostController, gunanya untuk mengontrol navigasi antar layar
 @Composable
 fun NavigationGraph(navHostController: NavHostController) {
+
+    // composable NavHost digunakan untuk menentukan komponen mana yang akan ditampilkan pada layar
+    // sesuai dengan route yang ditentukan
+    // di sini, saat pertama kali membuka aplikasi, destinasi diarahkan ke halaman Home
     NavHost(
         navController = navHostController,
         startDestination = BottomNavItems.Home.getRoutes(),
     ) {
+
+        // fungsi composable di bawah berguna untuk menentukan komponen mana yang akan ditampilkan
+        // misal, jika user menekan menu feed, maka akan diarahkan ke halaman feed
+        // biar bisa berganti halaman, fungsi composable menerima parameter route
         composable(route = BottomNavItems.Home.getRoutes()) {
             HomeScreen()
         }

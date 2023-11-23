@@ -8,6 +8,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.cloningtokopedia.R
 
+val Typography = Typography(
+    bodyLarge = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    )
+)
+
+// memuat font yang akan digunakan
+// di sini menggunakan tiga style font
+// light -> regular -> bold
 val openSauceOneLight = FontFamily(
     Font(R.font.open_sauce_sans_light)
 )
@@ -20,16 +33,8 @@ val openSauceOneBold = FontFamily(
     Font(R.font.open_sauce_one_bold)
 )
 
-val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    )
-)
-
+// membuat fungsi untuk mengambil font
+// terdapat input parameter untuk menentukan weight dari font
 fun getCustomFont(weight: String = "regular"): FontFamily {
     return when (weight) {
         "light" -> openSauceOneLight
