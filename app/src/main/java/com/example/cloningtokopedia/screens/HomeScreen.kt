@@ -15,17 +15,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cloningtokopedia.composable.CustomTopAppBar
 import com.example.cloningtokopedia.composable.DeliveredAddress
+import com.example.cloningtokopedia.customization.CustomBottomSheet
 import com.example.cloningtokopedia.customization.CustomTextView
 
 @Composable
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 fun HomeScreen() {
     Column(
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier.padding(horizontal = 15.dp)
     ) {
         CustomTopAppBar()
         Spacer(modifier = Modifier.height(10.dp))
         DeliveredAddress()
+        // CustomBottomSheet()
     }
 }
 
@@ -34,10 +36,11 @@ fun HomeScreen() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 fun HomeScreenPreview() {
     Column(
-        modifier = Modifier.padding(10.dp)
+       modifier = Modifier.padding(15.dp)
     ) {
         CustomTopAppBar()
         Spacer(modifier = Modifier.height(10.dp))
         DeliveredAddress()
+        // CustomBottomSheet()
     }
 }

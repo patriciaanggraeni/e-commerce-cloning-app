@@ -33,7 +33,7 @@ fun CustomTopAppBar() {
             // modifiernya menggunakan fungsi ekstensi yang telah dibuat sebelumnya
             modifier = Modifier
                 .customSearchField(
-                    width = 200.dp,
+                    width = 210.dp,
                     height = 35.dp,
                     cornerSize = 7.dp
                 )

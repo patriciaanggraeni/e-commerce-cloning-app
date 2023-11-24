@@ -35,19 +35,19 @@ fun CustomAddress(
             contentDescription = contentDescription,
             tint = Color.Unspecified,
         )
-        Spacer(modifier = Modifier.width(2.dp))
+        Spacer(modifier = Modifier.width(5.dp))
         CustomTextView(
             text = text,
-            fontSize = 10,
+            fontSize = 12,
             fontWeight = "regular",
         )
         Spacer(modifier = Modifier.width(2.dp))
         CustomTextView(
             text = customerName,
-            fontSize = 10,
+            fontSize = 12,
             fontWeight = "bold",
         )
-        Spacer(modifier = Modifier.width(2.dp))
+        Spacer(modifier = Modifier.width(5.dp))
         Icon(
             modifier = Modifier.width(10.dp),
             painter = iconTwo,
