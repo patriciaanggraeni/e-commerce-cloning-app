@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
-import com.example.cloningtokopedia.ui.theme.getCustomFont
+import com.example.cloningtokopedia.ui.theme.customFont
 
 @Composable
 fun CustomTextView(
@@ -19,7 +19,7 @@ fun CustomTextView(
         style = TextStyle(
             color = color,
             fontSize = fontSize.sp,
-            fontFamily = getCustomFont(weight = fontWeight)
+            fontFamily = customFont(weight = fontWeight)
         )
     )
 }

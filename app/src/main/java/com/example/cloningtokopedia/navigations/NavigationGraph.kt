@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.cloningtokopedia.model.BottomNavItems
 import com.example.cloningtokopedia.screens.FeedScreen
 import com.example.cloningtokopedia.screens.HomeScreen
 import com.example.cloningtokopedia.screens.OfficialStoreScreen

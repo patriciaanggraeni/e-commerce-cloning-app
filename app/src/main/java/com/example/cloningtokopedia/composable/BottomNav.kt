@@ -18,16 +18,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.cloningtokopedia.R
 import com.example.cloningtokopedia.customization.CustomTextView
-import com.example.cloningtokopedia.model.BottomNavItems
+import com.example.cloningtokopedia.navigations.BottomNavItems
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 import com.example.cloningtokopedia.ui.theme.accentColor
-import com.example.cloningtokopedia.ui.theme.primaryColor
 import com.example.cloningtokopedia.ui.theme.secondaryColor
 
 @Composable
-fun CustomBottomNavigation(navController: NavController) {
+fun BottomNav(navController: NavController) {
     val navItems = listOf(
         BottomNavItems.Home,
         BottomNavItems.Feed,
@@ -92,7 +90,7 @@ fun CustomBottomNavigation(navController: NavController) {
 fun CustomBottomNavigation() {
     CloningTokopediaTheme {
         Scaffold(
-            bottomBar = { CustomBottomNavigation(navController = rememberNavController()) }
+            bottomBar = { BottomNav(navController = rememberNavController()) }
         ) {}
     }
 }

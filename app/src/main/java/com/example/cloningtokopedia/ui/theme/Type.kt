@@ -30,7 +30,7 @@ val Typography = Typography(
     )
 )
 
-fun getCustomFont(weight: String = "regular"): FontFamily {
+fun customFont(weight: String = "regular"): FontFamily {
     return when (weight) {
         "light" -> openSauceOneLight
         "regular" -> openSauceOneRegular

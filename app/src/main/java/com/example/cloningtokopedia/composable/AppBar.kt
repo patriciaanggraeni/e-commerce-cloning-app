@@ -8,21 +8,31 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cloningtokopedia.R
+import com.example.cloningtokopedia.customization.CustomIcon
 import com.example.cloningtokopedia.customization.CustomSearchField
-import com.example.cloningtokopedia.customization.CustomTopAppBarIcons
-import com.example.cloningtokopedia.modifier.customSearchField
+import com.example.cloningtokopedia.modifier.CustomModifier.Companion.customSearchField
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 import com.example.cloningtokopedia.ui.theme.accentColor
 import com.example.cloningtokopedia.ui.theme.secondaryTextColor
 
 @Composable
-fun CustomTopAppBar() {
+fun CustomAppBar() {
+    val listIcons = listOf<Painter>(
+        painterResource(id = R.drawable.icn_email),
+        painterResource(id = R.drawable.icn_bell),
+        painterResource(id = R.drawable.icn_cart),
+        painterResource(id = R.drawable.icn_menu)
+    )
+
     Row(
-        Modifier.fillMaxWidth().padding(10.dp),
+        Modifier
+            .fillMaxWidth()
+            .padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -42,29 +52,14 @@ fun CustomTopAppBar() {
             iconSize = 10.dp,
             iconTint = accentColor,
         )
-        CustomTopAppBarIcons(
-             icon = painterResource(id = R.drawable.icn_email),
-             size = 20.dp,
-             tint = accentColor
-        )
 
-        CustomTopAppBarIcons(
-             icon = painterResource(id = R.drawable.icn_bell),
-             size = 20.dp,
-             tint = accentColor
-        )
-
-        CustomTopAppBarIcons(
-             icon = painterResource(id = R.drawable.icn_cart),
-             size = 20.dp,
-             tint = accentColor
-        )
-
-        CustomTopAppBarIcons(
-             icon = painterResource(id = R.drawable.icn_menu),
-             size = 20.dp,
-             tint = accentColor
-        )
+        listIcons.forEach {
+            CustomIcon(
+                icon = it,
+                size = 20.dp,
+                tint = accentColor
+            )
+        }
     }
 }
 
@@ -75,7 +70,7 @@ fun CustomTopAppBarPreview() {
         Row(
             Modifier.fillMaxSize(),
         ) {
-            CustomTopAppBar()
+            CustomAppBar()
         }
     }
 }
