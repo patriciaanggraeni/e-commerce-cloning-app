@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.cloningtokopedia.composable.BottomNav
 import com.example.cloningtokopedia.composable.CustomAppBar
 import com.example.cloningtokopedia.composable.CustomBottomNavigation
 import com.example.cloningtokopedia.navigations.NavigationGraph
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     topBar = { CustomAppBar() },
                     modifier = Modifier.fillMaxSize(),
-                    bottomBar = { CustomBottomNavigation(navController = navController) }
+                    bottomBar = { BottomNav(navController = navController) }
                 ) {
                     NavigationGraph(navHostController = navController)
                 }
@@ -38,12 +39,12 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
-     val navController = rememberNavController()
+    val navController = rememberNavController()
     CloningTokopediaTheme {
         Scaffold(
             topBar = { CustomAppBar() },
             modifier = Modifier.fillMaxSize(),
-            bottomBar = { CustomBottomNavigation(navController = navController) }
+            bottomBar = { BottomNav(navController = navController) }
         ) {
             NavigationGraph(navHostController = navController)
         }
