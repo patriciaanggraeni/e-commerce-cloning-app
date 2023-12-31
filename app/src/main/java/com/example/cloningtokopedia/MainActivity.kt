@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cloningtokopedia.composable.BottomNav
 import com.example.cloningtokopedia.composable.CustomAppBar
 import com.example.cloningtokopedia.composable.CustomBottomNavigation
+import com.example.cloningtokopedia.customization.CustomHomeAddress
 import com.example.cloningtokopedia.navigations.NavigationGraph
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 
@@ -24,7 +25,6 @@ class MainActivity : ComponentActivity() {
             CloningTokopediaTheme {
                 val navController = rememberNavController()
                 Scaffold(
-                    topBar = { CustomAppBar() },
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = { BottomNav(navController = navController) }
                 ) {
@@ -38,11 +38,10 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Preview(showBackground = true)
 @Composable
-fun Preview() {
-    val navController = rememberNavController()
+fun HomeScreenPreview() {
     CloningTokopediaTheme {
+       val navController = rememberNavController()
         Scaffold(
-            topBar = { CustomAppBar() },
             modifier = Modifier.fillMaxSize(),
             bottomBar = { BottomNav(navController = navController) }
         ) {
