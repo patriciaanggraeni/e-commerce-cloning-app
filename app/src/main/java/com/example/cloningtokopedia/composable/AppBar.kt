@@ -21,18 +21,15 @@ import com.example.cloningtokopedia.ui.theme.accentColor
 import com.example.cloningtokopedia.ui.theme.secondaryTextColor
 
 @Composable
-fun CustomAppBar() {
+fun CustomAppBar(modifier: Modifier) {
     val listIcons = listOf<Painter>(
         painterResource(id = R.drawable.icn_email),
         painterResource(id = R.drawable.icn_bell),
         painterResource(id = R.drawable.icn_cart),
         painterResource(id = R.drawable.icn_menu)
     )
-
     Row(
-        Modifier
-            .fillMaxWidth()
-            .padding(10.dp),
+        modifier = modifier,
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -70,7 +67,9 @@ fun CustomTopAppBarPreview() {
         Row(
             Modifier.fillMaxSize(),
         ) {
-            CustomAppBar()
+            CustomAppBar(
+                modifier = Modifier.fillMaxWidth().padding(10.dp)
+            )
         }
     }
 }
