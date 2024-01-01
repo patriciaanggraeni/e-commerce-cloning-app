@@ -12,14 +12,14 @@ import com.example.cloningtokopedia.modifier.CustomModifier.Companion.customIcon
 @Composable
 fun CustomIcon(
     icon: Painter,
-    iconName: String? = null,
     size: Dp = 24.dp,
     tint: Color = Color.Unspecified,
+    description: String? = null,
 ) {
     Icon(
         painter = icon,
-        contentDescription = iconName,
         tint = tint,
+        contentDescription = description,
         modifier = Modifier.customIcon(size, Color.Transparent),
     )
 }
