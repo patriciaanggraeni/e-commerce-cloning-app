@@ -23,7 +23,7 @@ import com.example.cloningtokopedia.R
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
 
 @Composable
-fun CustomHomeAddress(
+fun CustomAddressToggle(
     modifier: Modifier,
     username: String,
     leadingIcon: Painter,
@@ -52,18 +52,18 @@ fun CustomHomeAddress(
         CustomIcon(
             icon = leadingIcon,
             size = iconSize,
-            iconName = "Address"
+            description = "Address"
         )
         Spacer(modifier = Modifier.width(iconSpace))
-        CustomAddressTextView(
-            text = annotatedString,
+        CustomText(
+            annotatedText = annotatedString,
             fontSize = fontSize
         )
         Spacer(modifier = Modifier.width(iconSpace))
         CustomIcon(
             icon = trailingIcon,
             size = iconSize,
-            iconName = "Arrow Address Toggle"
+            description = "Arrow Address Toggle"
         )
     }
 }
@@ -74,7 +74,7 @@ fun CustomHomeAddress(
 fun CustomHomeAddressPreview() {
     CloningTokopediaTheme {
         Row {
-            CustomHomeAddress(
+            CustomAddressToggle(
                 username = "Anggara Susilo",
                 leadingIcon = painterResource(id = R.drawable.icn_maps_filled),
                 trailingIcon = painterResource(id = R.drawable.arrow_down),
