@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -29,20 +31,17 @@ import androidx.compose.ui.unit.dp
 import com.example.cloningtokopedia.R
 import com.example.cloningtokopedia.modifier.CustomModifier.Companion.customSearchField
 import com.example.cloningtokopedia.ui.theme.CloningTokopediaTheme
-import com.example.cloningtokopedia.ui.theme.accentColor
-import com.example.cloningtokopedia.ui.theme.primaryTextColor
+import com.example.cloningtokopedia.ui.theme.accentGray200
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomSearchField(
-    modifier: Modifier,
-    placeholder: String,
-    placeholderColor: Color = primaryTextColor,
-    placeholderTextSize: Int,
-    spacer: Dp = 0.dp,
     icon: Painter,
     iconSize: Dp = 24.dp,
     iconTint: Color = Color.Unspecified,
+    spacer: Dp = 0.dp,
+    modifier: Modifier,
+    placeholder: @Composable (() -> Unit)?
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -72,18 +71,16 @@ fun CustomSearchField(
                     interactionSource = MutableInteractionSource(),
                     placeholder = {
                         if (query.isBlank()) {
-                            CustomTextView(
-                                text = placeholder,
-                                fontSize = placeholderTextSize,
-                                color = placeholderColor
-                            )
+                            if (placeholder != null) {
+                                placeholder()
+                            }
                         }
                     },
                     container = {
                         OutlinedTextFieldDefaults.colors(
-                            disabledContainerColor = Color.Transparent,
-                            disabledBorderColor = Color.Transparent,
+                            focusedBorderColor = Color.Transparent,
                             unfocusedBorderColor = Color.Transparent,
+                            focusedContainerColor = Color.Transparent,
                             unfocusedContainerColor = Color.Transparent
                         )
                     }
@@ -98,17 +95,22 @@ fun CustomSearchField(
 fun SearchFieldPreview() {
     CloningTokopediaTheme {
         CustomSearchField(
-            modifier = Modifier.customSearchField(
-                width = 200.dp,
-                height = 35.dp,
-                cornerSize = 7.dp
-            ).padding(10.dp),
-            spacer = 10.dp,
-            placeholder = "Cari di Tokopedia",
-            placeholderTextSize = 12,
-            placeholderColor = accentColor,
             icon = painterResource(id = R.drawable.icn_search),
-            iconSize = 10.dp
+            iconSize = 10.dp,
+            spacer = 10.dp,
+            modifier = Modifier
+                .customSearchField(
+                    width = 200.dp,
+                    height = 35.dp,
+                    cornerSize = 7.dp
+                )
+                .padding(10.dp),
+            placeholder = {
+                CustomTextView(
+                    text = "Cari di Tokopedia",
+                    fontSize = 12.toDouble()
+                )
+            }
         )
     }
 }
