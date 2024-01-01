@@ -11,9 +11,9 @@ import com.example.cloningtokopedia.ui.theme.customFont
 @Composable
 fun CustomTextView(
     text: String,
-    fontSize: Int,
-    color: Color = Color.Black,
+    fontSize: Double,
     fontWeight: String = "regular",
+    color: Color = Color.Black
 ) {
     Text(
         text = text,
