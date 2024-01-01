@@ -1,13 +1,17 @@
 package com.example.cloningtokopedia.customization
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -35,80 +39,88 @@ import com.example.cloningtokopedia.ui.theme.accentGray200
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomSearchField(
+fun CustomSeacrhBar(
+    query: String,
     icon: Painter,
     iconSize: Dp = 24.dp,
-    iconTint: Color = Color.Unspecified,
-    spacer: Dp = 0.dp,
+    iconTint: Color = Color.Black,
     modifier: Modifier,
-    placeholder: @Composable (() -> Unit)?
+    contentPadding: PaddingValues = PaddingValues(),
+    placeholder: @Composable (() -> Unit)?,
 ) {
-    Row(
-        modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        var query by remember { mutableStateOf("") }
-        CustomIcon(
-            icon = icon,
-            size = iconSize,
-            tint = iconTint
-        )
-        Spacer(modifier = Modifier.width(spacer))
-        BasicTextField(
-            modifier = Modifier.fillMaxWidth(),
-            value = query,
-            onValueChange = { query = it },
-            singleLine = true,
-            decorationBox = { innerTextField ->
-                TextFieldDefaults.DecorationBox(
-                    value = query,
-                    innerTextField = { innerTextField() },
-                    enabled = true,
-                    singleLine = true,
-                    contentPadding = PaddingValues(0.dp),
-                    visualTransformation = VisualTransformation.None,
-                    interactionSource = MutableInteractionSource(),
-                    placeholder = {
-                        if (query.isBlank()) {
-                            if (placeholder != null) {
-                                placeholder()
-                            }
-                        }
-                    },
-                    container = {
-                        OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = Color.Transparent,
-                            unfocusedBorderColor = Color.Transparent,
-                            focusedContainerColor = Color.Transparent,
-                            unfocusedContainerColor = Color.Transparent
-                        )
-                    }
+    var state by remember { mutableStateOf(query) }
+
+    Box(
+        contentAlignment = Alignment.CenterStart,
+        modifier = modifier,
+        content = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(horizontal = 10.dp)
+            ) {
+                CustomIcon(
+                    icon = icon,
+                    size = iconSize,
+                    tint = iconTint,
                 )
+                Spacer(modifier = Modifier.width(10.dp))
+                BasicTextField(
+                    value = state,
+                    onValueChange = { state = it },
+                    modifier = Modifier.weight(1f)
+                ) {
+                    TextFieldDefaults.DecorationBox(
+                        value = state,
+                        innerTextField = { it() },
+                        enabled = true,
+                        singleLine = true,
+                        contentPadding = contentPadding,
+                        visualTransformation = VisualTransformation.None,
+                        interactionSource = MutableInteractionSource(),
+                        placeholder = {
+                            if (state.isEmpty()) {
+                                if (placeholder != null) {
+                                    placeholder()
+                                }
+                            }
+                        },
+                        container = {
+                            OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = Color.Transparent,
+                                unfocusedBorderColor = Color.Transparent,
+                                focusedContainerColor = Color.Transparent,
+                                unfocusedContainerColor = Color.Transparent
+                            )
+                        }
+                    )
+                }
             }
-        )
-    }
+        }
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun SearchFieldPreview() {
     CloningTokopediaTheme {
-        CustomSearchField(
+        CustomSeacrhBar(
+            query = "",
             icon = painterResource(id = R.drawable.icn_search),
-            iconSize = 10.dp,
-            spacer = 10.dp,
+            iconSize = 12.dp,
+            iconTint = accentGray200,
             modifier = Modifier
-                .customSearchField(
-                    width = 200.dp,
-                    height = 35.dp,
-                    cornerSize = 7.dp
-                )
-                .padding(10.dp),
+                .width(200.dp)
+                .height(35.dp)
+                .border(
+                    width = 1.dp,
+                    color = accentGray200,
+                    shape = RoundedCornerShape(7.dp)
+                ),
             placeholder = {
                 CustomTextView(
                     text = "Cari di Tokopedia",
-                    fontSize = 12.toDouble()
+                    fontSize = 12.toDouble(),
+                    color = accentGray200
                 )
             }
         )
